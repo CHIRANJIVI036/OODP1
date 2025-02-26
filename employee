@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    int EmpID;
+    string EmpName;
+    double BasicSalary;
+    double DA;
+    double HRA;
+    double ITax;
+    double NetSalary;
+
+public:
+    void accept() {
+        cout << "Enter Employee ID: ";
+        cin >> EmpID;
+        cin.ignore();
+        cout << "Enter Employee Name: ";
+        getline(cin, EmpName);
+        cout << "Enter Basic Salary: ";
+        cin >> BasicSalary;
+    }
+
+    void calculateSalary() {
+        DA = 0.25 * BasicSalary;
+        HRA = 800;
+        ITax = 0.15 * BasicSalary;
+        NetSalary = BasicSalary + DA + HRA - ITax;
+    }
+
+    void display() {
+        cout << "\n----------------------\n";
+        cout << "      PAY SLIP        " << endl;
+        cout << "----------------------\n";
+        cout << "Employee ID   : " << EmpID << endl;
+        cout << "Employee Name : " << EmpName << endl;
+        cout << "Basic Salary  : " << BasicSalary << endl;
+        cout << "DA (25%)      : " << DA << endl;
+        cout << "HRA           : " << HRA << endl;
+        cout << "Income Tax    : " << ITax << endl;
+        cout << "Net Salary    : " << NetSalary << endl;
+        cout << "----------------------\n";
+    }
+};
+
+int main() {
+    Employee emp;
+    emp.accept();
+    emp.calculateSalary();
+    emp.display();
+    return 0;
+}
