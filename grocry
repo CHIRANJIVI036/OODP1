@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int N, M;
+    cout << "Enter number of products: ";
+    cin >> N;
+    
+    int stock[N];
+    cout << "Enter stock levels for " << N << " products: ";
+    for (int i = 0; i < N; i++) {
+        cin >> stock[i];
+    }
+    cout << "Enter number of purchases: ";
+    cin >> M;
+    
+    for (int i = 0; i < M; i++) {
+        int productIndex, quantity;
+        cout << "Enter product index (0 to " << N-1 << ") and quantity: ";
+        cin >> productIndex >> quantity;
+        if (productIndex >= 0 && productIndex < N) {
+            if (stock[productIndex] >= quantity) {
+                stock[productIndex] -= quantity;
+                cout << "Purchase successful!" << endl;
+            } else {
+                cout << "Insufficient stock! Purchase denied." << endl;
+            }
+        } else {
+            cout << "Invalid product index!" << endl;
+        }
+    }
+    cout << "Updated stock levels: ";
+    for (int i = 0; i < N; i++) {
+        cout << stock[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
